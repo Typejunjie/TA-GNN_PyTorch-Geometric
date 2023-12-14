@@ -1,0 +1,10 @@
+*.csv
+*.pt
+*.txt
+*.dat
+
+__pycache__/
+
+test.ipynb
+log/
+model_repository/
