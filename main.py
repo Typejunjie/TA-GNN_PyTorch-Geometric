@@ -8,13 +8,13 @@ from dataset import session_graph
 from tensorboardX import SummaryWriter
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--massege', type=str, default='', help='massege of rewrite')
+parser.add_argument('--dataset', type=str, default='diginetica', help='')
 opt = parser.parse_args()
 
 start_time = time.time()
 # Define hyper-parameters
 varsion = 'TA_GNN'
-dataset = 'diginetica'
+dataset = opt.dataset
 batch_size = 100
 learning_rate = 0.001
 step_size = 3
@@ -36,7 +36,7 @@ train_dataloader= DataLoader(train, batch_size=batch_size, shuffle=True)
 test_dataloader = DataLoader(test, batch_size=batch_size)
 
 logdir = f'./log/{dataset}'
-writer = SummaryWriter(logdir + opt.massege + '--' + varsion)
+writer = SummaryWriter(logdir + '--' + varsion)
 
 # Init all parameters of model
 model = TA_GNN(n_node).to(device)
